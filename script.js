@@ -2,102 +2,8 @@
 // Seven Sports Calendar - Script Principal
 // ============================================
 
-/**
- * Array de partidos con información completa
- * Estructura: { tournament, home, homeLogo, away, awayLogo, stadium, stadiumEmoji, date, time }
- * homeLogo y awayLogo: URLs de imágenes de equipos
- * stadiumEmoji: emoji del estadio
- */
-const matches = [
-    {
-        tournament: 'Liga MX - Apertura',
-        home: 'América',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_América.svg/200px-Logo_América.svg.png',
-        away: 'Guadalajara',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ChivasLogo.svg/200px-ChivasLogo.svg.png',
-        stadium: 'Estadio Azteca',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-14',
-        time: '19:00'
-    },
-    {
-        tournament: 'Liga MX - Apertura',
-        home: 'UNAM',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Escudo_de_la_UNAM.svg/200px-Escudo_de_la_UNAM.svg.png',
-        away: 'Tigres',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Tigres_UANL_Logo.svg/200px-Tigres_UANL_Logo.svg.png',
-        stadium: 'Estadio Olímpico',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-15',
-        time: '21:00'
-    },
-    {
-        tournament: 'Liga MX - Apertura',
-        home: 'Monterrey',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/CF_Monterrey_Logo.svg/200px-CF_Monterrey_Logo.svg.png',
-        away: 'Toluca',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Toluca_logo.svg/200px-Toluca_logo.svg.png',
-        stadium: 'Estadio BBVA',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-16',
-        time: '19:30'
-    },
-    {
-        tournament: 'UEFA Champions League',
-        home: 'Real Madrid',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Real_Madrid_CF.svg/200px-Real_Madrid_CF.svg.png',
-        away: 'Manchester City',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Manchester_City_FC_badge.svg/200px-Manchester_City_FC_badge.svg.png',
-        stadium: 'Santiago Bernabéu',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-20',
-        time: '20:00'
-    },
-    {
-        tournament: 'UEFA Champions League',
-        home: 'Bayern Munich',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/FC_Bayern_Munich_logo_%282017%29.svg/200px-FC_Bayern_Munich_logo_%282017%29.svg.png',
-        away: 'PSG',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Paris_Saint-Germain_F.C._%282013%29.svg/200px-Paris_Saint-Germain_F.C._%282013%29.svg.png',
-        stadium: 'Allianz Arena',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-21',
-        time: '20:30'
-    },
-    {
-        tournament: 'Liga MX - Apertura',
-        home: 'Santos',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Santos_Laguna_Logo.svg/200px-Santos_Laguna_Logo.svg.png',
-        away: 'Pumas',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Pumas_UNAM_Logo.svg/200px-Pumas_UNAM_Logo.svg.png',
-        stadium: 'Estadio Corona',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-22',
-        time: '20:00'
-    },
-    {
-        tournament: 'Copa Libertadores',
-        home: 'Flamengo',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Flamengo_logo_%282019%29.svg/200px-Flamengo_logo_%282019%29.svg.png',
-        away: 'Boca Juniors',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Boca_Juniors_logo.svg/200px-Boca_Juniors_logo.svg.png',
-        stadium: 'Maracanã',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-25',
-        time: '21:30'
-    },
-    {
-        tournament: 'Copa Libertadores',
-        home: 'River Plate',
-        homeLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/River_Plate_logo.svg/200px-River_Plate_logo.svg.png',
-        away: 'São Paulo',
-        awayLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sao_Paulo_FC_logo.svg/200px-Sao_Paulo_FC_logo.svg.png',
-        stadium: 'Monumental',
-        stadiumEmoji: '🏟️',
-        date: '2024-07-26',
-        time: '21:00'
-    }
-];
+// Variable global para almacenar los datos de partidos
+let matches = [];
 
 // Mapa de ligas con sus emojis/imágenes
 const leagueData = {
@@ -108,6 +14,25 @@ const leagueData = {
 
 // Variables para almacenar las ligas seleccionadas
 let selectedLeagues = new Set(['Liga MX - Apertura', 'UEFA Champions League', 'Copa Libertadores']);
+
+/**
+ * Carga los datos de partidos desde data/matches.json
+ */
+async function loadMatches() {
+    try {
+        const response = await fetch('./data/matches.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        matches = await response.json();
+        console.log(`✅ Se cargaron ${matches.length} partidos desde data/matches.json`);
+        return matches;
+    } catch (error) {
+        console.error('❌ Error cargando matches.json:', error);
+        // Fallback: datos por defecto (opcional)
+        return [];
+    }
+}
 
 /**
  * Función para renderizar los partidos en el DOM
@@ -189,7 +114,7 @@ function renderMatches() {
         checkbox.addEventListener('change', updateLeagueCheckboxes);
     });
     
-    console.log(`✅ Se cargaron ${filteredMatches.length} partidos exitosamente`);
+    console.log(`✅ Se renderizaron ${filteredMatches.length} partidos`);
 }
 
 /**
@@ -389,7 +314,12 @@ function downloadAllCalendars() {
  * Event Listeners
  * Se ejecutan cuando el documento ha cargado completamente
  */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🏆 Inicializando Seven Sports Calendar...');
+    
+    // Cargar partidos desde el JSON
+    await loadMatches();
+    
     // Renderizar partidos al cargar la página
     renderMatches();
     
