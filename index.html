@@ -20,6 +20,49 @@
 
     <!-- Contenedor principal -->
     <main class="container">
+        <!-- Sección de filtros y descargas -->
+        <section class="filters-section">
+            <div class="filter-group">
+                <h3>Filtrar por Liga</h3>
+                <div class="league-filters">
+                    <label class="filter-label">
+                        <input type="checkbox" class="league-checkbox" value="Liga MX - Apertura" checked>
+                        <span>Liga MX</span>
+                    </label>
+                    <label class="filter-label">
+                        <input type="checkbox" class="league-checkbox" value="UEFA Champions League" checked>
+                        <span>UEFA Champions League</span>
+                    </label>
+                    <label class="filter-label">
+                        <input type="checkbox" class="league-checkbox" value="Copa Libertadores" checked>
+                        <span>Copa Libertadores</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="download-group">
+                <h3>Descargar Calendarios</h3>
+                <div class="download-buttons">
+                    <button class="btn btn-download" data-league="Liga MX - Apertura">
+                        <span class="btn-icon">📥</span>
+                        Liga MX
+                    </button>
+                    <button class="btn btn-download" data-league="UEFA Champions League">
+                        <span class="btn-icon">📥</span>
+                        Champions League
+                    </button>
+                    <button class="btn btn-download" data-league="Copa Libertadores">
+                        <span class="btn-icon">📥</span>
+                        Copa Libertadores
+                    </button>
+                    <button class="btn btn-download-all">
+                        <span class="btn-icon">📥</span>
+                        Todos los Calendarios
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Sección de próximos partidos -->
         <section class="matches-section">
             <h2>Próximos Partidos</h2>
@@ -28,15 +71,11 @@
             </ul>
         </section>
 
-        <!-- Sección de botones de acción -->
+        <!-- Sección de botones de acción principal -->
         <section class="actions-section">
             <button id="subscribe-btn" class="btn btn-primary">
                 <span class="btn-icon">📧</span>
                 Suscribirme
-            </button>
-            <button id="download-btn" class="btn btn-secondary">
-                <span class="btn-icon">📥</span>
-                Descargar .ics
             </button>
         </section>
     </main>
