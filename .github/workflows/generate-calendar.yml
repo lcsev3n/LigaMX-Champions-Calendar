@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Verify install
+        run: npm list ics
+
       - name: Generate calendar
         run: node scripts/generate-calendar.js
 
