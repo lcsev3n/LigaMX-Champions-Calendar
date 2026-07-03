@@ -99,10 +99,13 @@ const matches = [
     }
 ];
 
+// Variables para almacenar las ligas seleccionadas
+let selectedLeagues = new Set(['Liga MX - Apertura', 'UEFA Champions League', 'Copa Libertadores']);
+
 /**
  * Función para renderizar los partidos en el DOM
  * Recorre el array de partidos y crea elementos HTML para cada uno
- * Incluye logos de equipos (imágenes) y emoji del stadio
+ * Incluye logos de equipos (imágenes) y emoji del estadio
  */
 function renderMatches() {
     const matchesList = document.getElementById('matches');
@@ -110,11 +113,19 @@ function renderMatches() {
     // Limpiar la lista antes de agregar elementos
     matchesList.innerHTML = '';
     
+    // Filtrar partidos según las ligas seleccionadas
+    const filteredMatches = matches.filter(match => selectedLeagues.has(match.tournament));
+    
+    if (filteredMatches.length === 0) {
+        matchesList.innerHTML = '<li class="no-matches">No hay partidos para los filtros seleccionados</li>';
+        return;
+    }
+    
     // Iterar sobre cada partido y crear su elemento HTML
-    matches.forEach((match, index) => {
+    filteredMatches.forEach((match, index) => {
         const li = document.createElement('li');
         li.className = 'match-item';
-        li.setAttribute('data-match-id', index);
+        li.setAttribute('data-tournament', match.tournament);
         
         // Construir el contenido HTML del partido con logos e imágenes
         li.innerHTML = `
@@ -123,7 +134,7 @@ function renderMatches() {
             <div class="match-container">
                 <!-- Equipo local -->
                 <div class="team-section home-team">
-                    <img src="${match.homeLogo}" alt="${match.home}" class="team-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect fill=%27%231e90ff%27 width=%27100%27 height=%27100%27/%3E%3Ctext x=%2750%27 y=%2750%27 font-size=%2740%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E?%3C/text%3E%3C/svg%3E'">
+                    <img src="${match.homeLogo}" alt="${match.home}" class="team-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect fill=%271e90ff%27 width=%27100%27 height=%27100%27/%3E%3Ctext x=%2750%27 y=%2750%27 font-size=%2740%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E?%3C/text%3E%3C/svg%3E'">
                     <div class="team-info">
                         <span class="team-name">${match.home}</span>
                     </div>
@@ -161,7 +172,7 @@ function renderMatches() {
         matchesList.appendChild(li);
     });
     
-    console.log(`✅ Se cargaron ${matches.length} partidos exitosamente`);
+    console.log(`✅ Se cargaron ${filteredMatches.length} partidos exitosamente`);
 }
 
 /**
@@ -185,20 +196,13 @@ function formatDate(dateString) {
 }
 
 /**
- * Función para manejar la suscripción del usuario
- * Muestra un mensaje de confirmación
+ * Función para generar contenido ICS
+ * Crea un archivo de calendario con los partidos especificados
+ * 
+ * @param {Array} matchesToInclude - Array de partidos a incluir
+ * @returns {string} Contenido ICS formateado
  */
-function handleSubscribe() {
-    alert('¡Gracias por suscribirte! Pronto recibirás actualizaciones de próximos partidos.');
-    console.log('Usuario suscrito al calendario deportivo');
-}
-
-/**
- * Función para descargar el archivo .ics
- * Crea un archivo de calendario con los próximos partidos
- */
-function handleDownload() {
-    // Crear contenido ICS básico
+function generateIcsContent(matchesToInclude) {
     let icsContent = 'BEGIN:VCALENDAR\n';
     icsContent += 'VERSION:2.0\n';
     icsContent += 'PRODID:-//Seven Sports Calendar//EN\n';
@@ -207,7 +211,7 @@ function handleDownload() {
     icsContent += 'X-WR-CALNAME:Seven Sports Calendar\n';
     
     // Agregar cada partido como un evento
-    matches.forEach((match, index) => {
+    matchesToInclude.forEach((match, index) => {
         const eventDate = match.date.replace(/-/g, '');
         const eventTime = match.time.replace(/:/g, '');
         
@@ -225,20 +229,64 @@ function handleDownload() {
     
     icsContent += 'END:VCALENDAR\n';
     
-    // Crear blob y descargar
+    return icsContent;
+}
+
+/**
+ * Función para descargar un archivo .ics
+ * 
+ * @param {string} icsContent - Contenido del archivo ICS
+ * @param {string} filename - Nombre del archivo a descargar
+ */
+function downloadIcsFile(icsContent, filename) {
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
     
     link.setAttribute('href', url);
-    link.setAttribute('download', 'seven-sports-calendar.ics');
+    link.setAttribute('download', filename);
     link.style.visibility = 'hidden';
     
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     
-    console.log('✅ Archivo .ics descargado exitosamente');
+    console.log(`✅ Archivo ${filename} descargado exitosamente`);
+}
+
+/**
+ * Función para manejar la suscripción del usuario
+ * Muestra un mensaje de confirmación
+ */
+function handleSubscribe() {
+    alert('¡Gracias por suscribirte! Pronto recibirás actualizaciones de próximos partidos.');
+    console.log('Usuario suscrito al calendario deportivo');
+}
+
+/**
+ * Función para descargar calendario de una liga específica
+ * 
+ * @param {string} league - Nombre de la liga
+ */
+function downloadLeagueCalendar(league) {
+    const leagueMatches = matches.filter(match => match.tournament === league);
+    
+    if (leagueMatches.length === 0) {
+        alert(`No hay partidos disponibles para ${league}`);
+        return;
+    }
+    
+    const icsContent = generateIcsContent(leagueMatches);
+    const filename = `${league.replace(/\s+/g, '-').toLowerCase()}.ics`;
+    downloadIcsFile(icsContent, filename);
+}
+
+/**
+ * Función para descargar todos los calendarios
+ */
+function downloadAllCalendars() {
+    const icsContent = generateIcsContent(matches);
+    downloadIcsFile(icsContent, 'seven-sports-calendar-all.ics');
 }
 
 /**
@@ -249,16 +297,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // Renderizar partidos al cargar la página
     renderMatches();
     
-    // Agregar eventos a los botones
-    const subscribeBtn = document.getElementById('subscribe-btn');
-    const downloadBtn = document.getElementById('download-btn');
+    // ===== Manejo de filtros de ligas =====
+    const leagueCheckboxes = document.querySelectorAll('.league-checkbox');
+    leagueCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            const league = e.target.value;
+            
+            if (e.target.checked) {
+                selectedLeagues.add(league);
+            } else {
+                selectedLeagues.delete(league);
+            }
+            
+            renderMatches();
+            console.log('Ligas seleccionadas:', Array.from(selectedLeagues));
+        });
+    });
     
-    if (subscribeBtn) {
-        subscribeBtn.addEventListener('click', handleSubscribe);
+    // ===== Manejo de botones de descarga por liga =====
+    const downloadLeagueButtons = document.querySelectorAll('.btn-download');
+    downloadLeagueButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const league = button.getAttribute('data-league');
+            downloadLeagueCalendar(league);
+        });
+    });
+    
+    // ===== Manejo del botón de descargar todos =====
+    const downloadAllButton = document.querySelector('.btn-download-all');
+    if (downloadAllButton) {
+        downloadAllButton.addEventListener('click', downloadAllCalendars);
     }
     
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', handleDownload);
+    // ===== Manejo del botón de suscripción =====
+    const subscribeBtn = document.getElementById('subscribe-btn');
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', handleSubscribe);
     }
     
     console.log('🏆 Seven Sports Calendar cargado correctamente');
