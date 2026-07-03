@@ -13,7 +13,13 @@ data.competitions.forEach((competition) => {
 
     const [year, month, day] = match.date.split("-").map(Number);
 
-    let time = match.time ? match.time.split(":").map(Number) : [12, 0];
+    let time;
+
+if (!match.time || match.status === "estimated") {
+  time = [12, 0]; // default safe time
+} else {
+  time = match.time.split(":").map(Number);
+}
 
     events.push({
       title: `${match.home} vs ${match.away}`,
