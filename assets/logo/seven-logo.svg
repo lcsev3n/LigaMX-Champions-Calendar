@@ -1,0 +1,18 @@
+<svg width="900" height="260" viewBox="0 0 900 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M55 42H255L229 88H143L119 130H197L171 176H67L28 246H-20L72 88H29L55 42Z" fill="url(#sevenGradient)"/>
+  <text x="300" y="105" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900" letter-spacing="8">SEVEN</text>
+  <text x="305" y="165" fill="url(#textGradient)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="18">SPORTS CALENDAR</text>
+  <text x="308" y="215" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="500" letter-spacing="10">ALWAYS IN THE GAME.</text>
+  <defs>
+    <linearGradient id="sevenGradient" x1="30" y1="35" x2="245" y2="235" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB"/>
+      <stop offset="0.5" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="textGradient" x1="305" y1="145" x2="670" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E"/>
+      <stop offset="0.5" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+</svg>
