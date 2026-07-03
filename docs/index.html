@@ -1,91 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seven Sports Calendar</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seven Sports Calendar</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Header con logo y título -->
-    <header class="header">
-        <div class="header-content">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='24' fill='%231e90ff'/%3E%3Ctext x='25' y='32' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3E7%3C/text%3E%3C/svg%3E" alt="Logo" class="logo">
-            <div class="header-text">
-                <h1>Seven Sports Calendar</h1>
-                <p class="subtitle">Tu calendario deportivo. Siempre actualizado.</p>
-            </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="logo">7</div>
+
+      <p class="eyebrow">SEVEN</p>
+      <h1>Sports Calendar</h1>
+      <p class="tagline">Always in the Game.</p>
+
+      <div class="actions">
+        <a class="btn primary" href="webcal://lcsev3n.github.io/Seven-Sports-Calendar/calendar/combined.ics">
+          📅 Subscribe
+        </a>
+
+        <a class="btn secondary" href="./calendar/combined.ics" download>
+          ⬇ Download .ics
+        </a>
+
+        <a class="btn ghost" href="https://github.com/lcsev3n/Seven-Sports-Calendar" target="_blank">
+          ⭐ GitHub
+        </a>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <span>⚽</span>
+        <h2>Liga MX</h2>
+        <p>Follow Mexican football matches directly from your calendar.</p>
+      </article>
+
+      <article class="card">
+        <span>🏆</span>
+        <h2>Champions League</h2>
+        <p>Track Europe’s biggest nights with automatic calendar support.</p>
+      </article>
+    </section>
+
+    <section class="status">
+      <h2>Project Status</h2>
+
+      <div class="status-grid">
+        <div>
+          <strong>v0.1.1</strong>
+          <p>Current Version</p>
         </div>
-    </header>
 
-    <!-- Contenedor principal -->
-    <main class="container">
-        <!-- Sección de filtros y descargas -->
-        <section class="filters-section">
-            <div class="filter-group">
-                <h3>Filtrar por Liga</h3>
-                <div class="league-filters">
-                    <label class="filter-label">
-                        <input type="checkbox" class="league-checkbox" value="Liga MX - Apertura" checked>
-                        <span>Liga MX</span>
-                    </label>
-                    <label class="filter-label">
-                        <input type="checkbox" class="league-checkbox" value="UEFA Champions League" checked>
-                        <span>UEFA Champions League</span>
-                    </label>
-                    <label class="filter-label">
-                        <input type="checkbox" class="league-checkbox" value="Copa Libertadores" checked>
-                        <span>Copa Libertadores</span>
-                    </label>
-                </div>
-            </div>
+        <div>
+          <strong>Active</strong>
+          <p>GitHub Actions</p>
+        </div>
 
-            <div class="download-group">
-                <h3>Descargar Calendarios</h3>
-                <div class="download-buttons">
-                    <button class="btn btn-download" data-league="Liga MX - Apertura">
-                        <span class="btn-icon">📥</span>
-                        Liga MX
-                    </button>
-                    <button class="btn btn-download" data-league="UEFA Champions League">
-                        <span class="btn-icon">📥</span>
-                        Champions League
-                    </button>
-                    <button class="btn btn-download" data-league="Copa Libertadores">
-                        <span class="btn-icon">📥</span>
-                        Copa Libertadores
-                    </button>
-                    <button class="btn btn-download-all">
-                        <span class="btn-icon">📥</span>
-                        Todos los Calendarios
-                    </button>
-                </div>
-            </div>
-        </section>
+        <div>
+          <strong>Open Source</strong>
+          <p>Built on GitHub</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- Sección de próximos partidos -->
-        <section class="matches-section">
-            <h2>Próximos Partidos</h2>
-            <ul id="matches" class="matches-list">
-                <!-- Los partidos se cargarán dinámicamente desde script.js -->
-            </ul>
-        </section>
-
-        <!-- Sección de botones de acción principal -->
-        <section class="actions-section">
-            <button id="subscribe-btn" class="btn btn-primary">
-                <span class="btn-icon">📧</span>
-                Suscribirme
-            </button>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Seven Sports Calendar. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Script principal -->
-    <script src="script.js"></script>
 </body>
 </html>
