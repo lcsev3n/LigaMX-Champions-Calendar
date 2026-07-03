@@ -1,0 +1,88 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Seven Sports Calendar//Combined Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Seven Sports Calendar - Calendario Combinado
+X-WR-TIMEZONE:UTC
+BEGIN:VEVENT
+DTSTART:20240714T190000
+DTSTAMP:20240703T120000Z
+UID:combined-001-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - América vs Guadalajara
+DESCRIPTION:Partido de Liga MX\nEquipos: América vs Guadalajara
+LOCATION:Estadio Azteca
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240715T210000
+DTSTAMP:20240703T120000Z
+UID:combined-002-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - UNAM vs Tigres
+DESCRIPTION:Partido de Liga MX\nEquipos: UNAM vs Tigres
+LOCATION:Estadio Olímpico Universitario
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240716T193000
+DTSTAMP:20240703T120000Z
+UID:combined-003-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - Monterrey vs Toluca
+DESCRIPTION:Partido de Liga MX\nEquipos: Monterrey vs Toluca
+LOCATION:Estadio BBVA
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240720T200000
+DTSTAMP:20240703T120000Z
+UID:combined-004-20240703@sevensportscalendar.com
+SUMMARY:UEFA Champions League - Real Madrid vs Manchester City
+DESCRIPTION:Partido de UEFA Champions League\nEquipos: Real Madrid vs Manchester City
+LOCATION:Santiago Bernabéu
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240721T203000
+DTSTAMP:20240703T120000Z
+UID:combined-005-20240703@sevensportscalendar.com
+SUMMARY:UEFA Champions League - Bayern Munich vs PSG
+DESCRIPTION:Partido de UEFA Champions League\nEquipos: Bayern Munich vs PSG
+LOCATION:Allianz Arena
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240722T200000
+DTSTAMP:20240703T120000Z
+UID:combined-006-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - Santos vs Pumas
+DESCRIPTION:Partido de Liga MX\nEquipos: Santos vs Pumas
+LOCATION:Estadio Corona
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240725T213000
+DTSTAMP:20240703T120000Z
+UID:combined-007-20240703@sevensportscalendar.com
+SUMMARY:Copa Libertadores - Flamengo vs Boca Juniors
+DESCRIPTION:Partido de Copa Libertadores\nEquipos: Flamengo vs Boca Juniors
+LOCATION:Estádio do Maracanã
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240726T210000
+DTSTAMP:20240703T120000Z
+UID:combined-008-20240703@sevensportscalendar.com
+SUMMARY:Copa Libertadores - River Plate vs São Paulo
+DESCRIPTION:Partido de Copa Libertadores\nEquipos: River Plate vs São Paulo
+LOCATION:Monumental
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR
