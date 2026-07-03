@@ -1,0 +1,33 @@
+name: Generate Calendar
+
+on:
+  push:
+    paths:
+      - 'data/matches.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate calendar
+        run: node scripts/generate-calendar.js
+
+      - name: Commit updated calendar
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add calendar/combined.ics
+          git commit -m "auto: update calendar" || echo "no changes"
+          git push
