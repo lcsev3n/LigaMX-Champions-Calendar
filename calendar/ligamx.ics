@@ -1,0 +1,48 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Seven Sports Calendar//Liga MX//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Liga MX - Seven Sports Calendar
+X-WR-TIMEZONE:America/Mexico_City
+BEGIN:VEVENT
+DTSTART:20240714T190000
+DTSTAMP:20240703T120000Z
+UID:ligamx-001-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - América vs Guadalajara
+DESCRIPTION:Partido de Liga MX\nEquipos: América vs Guadalajara\nFecha: 14 de Julio de 2024
+LOCATION:Estadio Azteca
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240715T210000
+DTSTAMP:20240703T120000Z
+UID:ligamx-002-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - UNAM vs Tigres
+DESCRIPTION:Partido de Liga MX\nEquipos: UNAM vs Tigres\nFecha: 15 de Julio de 2024
+LOCATION:Estadio Olímpico Universitario
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240716T193000
+DTSTAMP:20240703T120000Z
+UID:ligamx-003-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - Monterrey vs Toluca
+DESCRIPTION:Partido de Liga MX\nEquipos: Monterrey vs Toluca\nFecha: 16 de Julio de 2024
+LOCATION:Estadio BBVA
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240722T200000
+DTSTAMP:20240703T120000Z
+UID:ligamx-004-20240703@sevensportscalendar.com
+SUMMARY:Liga MX - Santos vs Pumas
+DESCRIPTION:Partido de Liga MX\nEquipos: Santos vs Pumas\nFecha: 22 de Julio de 2024
+LOCATION:Estadio Corona
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR
