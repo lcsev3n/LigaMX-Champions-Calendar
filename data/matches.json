@@ -1,0 +1,90 @@
+[
+  {
+    "tournament": "Liga MX - Apertura",
+    "home": "América",
+    "homeLogo": "./assets/america.png",
+    "away": "Guadalajara",
+    "awayLogo": "./assets/chivas.png",
+    "stadium": "Estadio Azteca",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-14",
+    "time": "19:00"
+  },
+  {
+    "tournament": "Liga MX - Apertura",
+    "home": "UNAM",
+    "homeLogo": "./assets/unam.png",
+    "away": "Tigres",
+    "awayLogo": "./assets/tigres.png",
+    "stadium": "Estadio Olímpico",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-15",
+    "time": "21:00"
+  },
+  {
+    "tournament": "Liga MX - Apertura",
+    "home": "Monterrey",
+    "homeLogo": "./assets/monterrey.png",
+    "away": "Toluca",
+    "awayLogo": "./assets/toluca.png",
+    "stadium": "Estadio BBVA",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-16",
+    "time": "19:30"
+  },
+  {
+    "tournament": "UEFA Champions League",
+    "home": "Real Madrid",
+    "homeLogo": "./assets/real.png",
+    "away": "Manchester City",
+    "awayLogo": "./assets/manchestercity.png",
+    "stadium": "Santiago Bernabéu",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-20",
+    "time": "20:00"
+  },
+  {
+    "tournament": "UEFA Champions League",
+    "home": "Bayern Munich",
+    "homeLogo": "./assets/bayern.png",
+    "away": "PSG",
+    "awayLogo": "./assets/psg.png",
+    "stadium": "Allianz Arena",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-21",
+    "time": "20:30"
+  },
+  {
+    "tournament": "Liga MX - Apertura",
+    "home": "Santos",
+    "homeLogo": "./assets/santos.png",
+    "away": "Pumas",
+    "awayLogo": "./assets/pumas.png",
+    "stadium": "Estadio Corona",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-22",
+    "time": "20:00"
+  },
+  {
+    "tournament": "Copa Libertadores",
+    "home": "Flamengo",
+    "homeLogo": "./assets/flamengo.png",
+    "away": "Boca Juniors",
+    "awayLogo": "./assets/boca.png",
+    "stadium": "Maracanã",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-25",
+    "time": "21:30"
+  },
+  {
+    "tournament": "Copa Libertadores",
+    "home": "River Plate",
+    "homeLogo": "./assets/river.png",
+    "away": "São Paulo",
+    "awayLogo": "./assets/saopaulo.png",
+    "stadium": "Monumental",
+    "stadiumEmoji": "🏟️",
+    "date": "2024-07-26",
+    "time": "21:00"
+  }
+]
